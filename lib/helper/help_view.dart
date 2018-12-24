@@ -11,9 +11,17 @@ void drawNStar(Canvas canvas,Paint paint,int num ,double R, double r){
 void drawRegularPoly(Canvas canvas,Paint paint,int num,double R){
   canvas.drawPath(regularPolygonPath(num, R), paint);
 }
-void drawRegularStar(Canvas canvas,Paint paint, int num ,double R){
+void drawRegularStar(Canvas canvas,Paint paint, int num ,double R,double x,double y){
+  canvas.translate(x, y);
+  if(R>70){
+    canvas.drawPath(regularStarPath(num, R), paint);
 
-  canvas.drawPath(regularStarPath(num, R), paint);
+  }else if(R>45&&R<=70){
+    canvas.drawPath(regularPolygonPath(num, R), paint);
+
+  }else{
+    canvas.drawPath(regularStarPath(num, R), paint);
+  }
 }
 
 void drawGrid(Canvas canvas ,Size winSize,Paint paint){
