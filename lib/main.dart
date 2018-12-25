@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/view/start_view.dart';
 import 'package:flutter_animate/page/animal_page.dart';
+import 'package:flutter_animate/page/run_ball_page.dart';
+import 'helper/common_path.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: AnimalPage(),
+      home: RunBallPage(),
     );
   }
 }
@@ -79,11 +81,5 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-  Color randomRGB(){
-    Random random=new Random();
-    int r=30+random.nextInt(200);
-    int g=30+random.nextInt(205);
-    int b=30+random.nextInt(205);
-    return Color.fromARGB(255, r, g, b);
-  }
+
 }

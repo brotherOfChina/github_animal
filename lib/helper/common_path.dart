@@ -1,7 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'dart:math';
-
+Color randomRGB(){
+  Random random=new Random();
+  int r=30+random.nextInt(200);
+  int g=30+random.nextInt(205);
+  int b=30+random.nextInt(205);
+  return Color.fromARGB(255, r, g, b);
+}
 Path nStarPath(int num, double R, double r) {
   Path path = new Path();
   double perDeg = 360 / num; //尖角的度数
