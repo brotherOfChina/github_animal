@@ -10,4 +10,18 @@ class Ball {
   Color color; //颜色
   double r; //小球半径
   Ball({this.x,this.y,this.aX,this.aY,this.vX,this.vY,this.color,this.r});
+
 }
+Ball fromBall(Ball ball){
+  Ball _ball=new Ball();
+  _ball.x=ball.x;
+  _ball.y=ball.y;
+  _ball.color=ball.color;
+  _ball.vX=ball.vX;
+  _ball.vY=ball.vY;
+  _ball.aX=ball.aX;
+  _ball.aY=ball.aY;
+  _ball.r=ball.r;
+  return _ball;
+}
+

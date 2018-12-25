@@ -4,12 +4,12 @@ import 'package:flutter_animate/model/ball.dart';
 class RunBallView extends CustomPainter {
   Paint mPint;
   BuildContext context;
-  Ball _ball;
+  List<Ball> _balls;
   Rect _limit;
 
-  RunBallView(this.context, Ball ball, Rect limit) {
+  RunBallView(this.context, List<Ball> balls, Rect limit) {
     mPint = new Paint();
-    _ball = ball;
+    _balls = balls;
     _limit = limit;
   }
 
@@ -20,7 +20,10 @@ class RunBallView extends CustomPainter {
     canvas.drawRect(_limit, mPint);
 
     canvas.save();
-    drawBall(canvas, _ball);
+    _balls.forEach((ball){
+      drawBall(canvas, ball);
+    });
+
     canvas.restore();
   }
 
