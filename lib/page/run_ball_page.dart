@@ -14,7 +14,7 @@ class RunBallPage extends StatefulWidget {
 class _RunBallPage extends State<RunBallPage>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  List<Ball> _balls;
+  List<Ball> _balls=List<Ball>();
   var _limit = Rect.fromLTRB(-140, -100, 140, 100);
 
   @override
@@ -31,8 +31,8 @@ class _RunBallPage extends State<RunBallPage>
         aX: 0.05,
         aY: 0.1,
         vX: 3,
-        vY: 1.5);
-    var _balls = List<Ball>();
+        vY: -3  );
+
     _balls.add(_ball);
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200000));
@@ -53,7 +53,7 @@ class _RunBallPage extends State<RunBallPage>
     for (int i = 0; i < _balls.length; i++) {
       var _ball = _balls[i];
       if (_ball.r < 0.3) {
-        _balls.remove(_ball);
+        _balls.removeAt(i);
       }
       _ball.x += _ball.vX;
       _ball.y += _ball.vY;
@@ -66,13 +66,17 @@ class _RunBallPage extends State<RunBallPage>
         newBall.vX = -newBall.vX;
         newBall.vY = -newBall.vY;
         _balls.add(newBall);
-        _ball.y=_limit.bottom+_ball.r;
-
+        _ball.y=_limit.bottom;
+        _ball.r=_ball.r/2;
+        _ball.vY=-_ball.vY;
         _ball.color = randomRGB();
       }
       //设定上边界
       if (_ball.y < _limit.top + _ball.r) {
+
+
         _ball.y = _limit.top + _ball.r;
+
         _ball.vY = -_ball.vY;
         _ball.color = randomRGB();
       }
@@ -84,6 +88,13 @@ class _RunBallPage extends State<RunBallPage>
       }
       //限定右边界
       if (_ball.x > _limit.right - _ball.r) {
+        var newBall=fromBall(_ball);
+        newBall.r=newBall.r/2;
+        newBall.vX=-newBall.vX;
+        newBall.vY=-newBall.vY;
+        _balls.add(newBall);
+
+        _ball.r=_ball.r/2;
         _ball.x = _limit.right - _ball.r;
         _ball.vX = -_ball.vX;
         _ball.color = randomRGB();

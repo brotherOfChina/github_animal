@@ -5,6 +5,7 @@ import 'package:flutter_animate/view/start_view.dart';
 import 'package:flutter_animate/page/animal_page.dart';
 import 'package:flutter_animate/page/run_ball_page.dart';
 import 'helper/common_path.dart';
+import 'package:flutter_animate/page/date_time_page.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: RunBallPage(),
+      home: DateTimePage(),
     );
   }
 }
